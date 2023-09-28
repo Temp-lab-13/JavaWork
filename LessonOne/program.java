@@ -1,5 +1,8 @@
 package LessonOne;
 
+import java.util.Scanner;
+
+//импорт модуля, отвечающего за ввод с консоли.
 public class program {
     public static void main(String[] args) {
         System.out.println("Текст");
@@ -13,6 +16,18 @@ public class program {
         // Объявление и присвоение строкового типа дыннах.
         System.out.println(s);
         // Вывод значения переменной.
+
+        Scanner iScanner = new Scanner(System.in);
+        // Создаём экземпляр класса Scanner,
+        // который будем использовать для инициализации
+        // ввода с консоли.
+        String text = iScanner.nextLine();
+        // Инициализируем ввод и сохраняем в перменную.
+        System.out.println(text);
+        // Выводим в консоль то, что ввели ранее.
+        iScanner.close();
+        // Завершаем операцию ввода.
+
         s.charAt(1); //
         // Обращение к конкретному символу строки.
         int i = 10_000;
