@@ -78,6 +78,96 @@ arr[1] // 2
 arr[1] = 13 // 2-ку в массиве заменит число 13
 ```
 
+## Коллиекции
+
+### ArrayList
+Похож на массив.
+
+Создание листа.
+```java
+// Сырой лист без обозначения типа.
+// В него можно положить любой ти данных (одинаковый).
+// Но, из-за его преобразования в Object, раотает медленей.
+ArrayList list = new ArrayList();
+// Тиизированный лист. Предпочтительней.
+ArrayList<Integer> list = new ArrayList<Integer>();
+ArrayList<Integer> list2 = new ArrayList<>();
+// Создание листа с определённым размером(его можно менять)
+ArrayList<Integer> list3 = new ArrayList<>(10); 
+// Создание листа с присвоением значений другого листа.
+ArrayList<Integer> list4 = new ArrayList<>(list3);
+```
+
+Добавление эелмена.
+```java
+ArrayList<Integer> list = new ArrayList<Integer>();
+list.add(23);
+```
+Вывод.
+```java
+ArrayList<Integer> list = new ArrayList<Integer>();
+list.add(23);
+list.add(1);
+//Вывод каждого элемента через форич.
+for (Object o : list) {
+    System.out.println(o);
+}
+```
+
+Другие методы.
+```java
+add(args)
+// добавляет элемент в список ( в т.ч. на нужную позицию)
+get(pos)
+// возвращает элемент из списка по указанной позиции
+indexOf(item) 
+// первое вхождение или -1
+lastIndexOf(item) 
+// последнее вхождение или -1
+remove(pos) 
+// удаление элемента на указанной позиции и его возвращение
+set(int pos, T item) 
+// помещает значение item элементу, который находится
+на позиции pos
+void sort(Comparator) 
+// сортирует набор данных по правилу
+subList(int start, int end) 
+// получение набора данных от позиции start до end
+clear() 
+// очистка списка
+toString() 
+// «конвертация» списка в строку
+Arrays.asList 
+// преобразует массив в список
+containsAll(col) 
+// проверяет включение всех элементов из col
+removeAll(col) 
+// удаляет элементы, имеющиеся в col
+retainAll(col) 
+// оставляет элементы, имеющиеся в col
+toArray() 
+// конвертация списка в массив Object’ов
+toArray(type array) 
+// конвертация списка в массив type
+List.copyOf(col) 
+// возвращает копию списка на основе имеющегося
+List.of(item1, item2,...) 
+// возвращает неизменяемый список
+```
+Итератор
+`Iterator<E>` - `Е` - тип данных.
+
+Методы: `hasNext()`, `next()`, `remove()`.
+```java
+Iterator<Integer> col = list.iterator();
+while (col.hasNext()) {
+System.out.println(col.next());
+}
+```
+`ListIterator<E> URL`
+
+Методы: `hasPrevious()`, `E previous()`, `nextIndex()`, `previousIndex()`, `set(E e)`, `add(E e)`
+
 ## API
 
 > #### _Application programming interface_ (API) - это контракт, который предоставляет пограмма. "Ко мне можно обращаться так и так, я обязуюсь делать это."
