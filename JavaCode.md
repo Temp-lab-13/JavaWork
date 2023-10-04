@@ -139,6 +139,7 @@ text.regionMatches()
 // Подключение файла, и содание переменной с данными их него, для работы с ним в коде.
 File f1 = new File("file.txt");
 File f2 = new File("/Users/sk/vscode/java_projects/file.txt");
+
 ```
 Сохранение пути к файлу в отдельную переменную.
 ```java
@@ -156,7 +157,18 @@ File f3 = new File(pathFile);
 System.out.println(f3.getAbsolutePath());
 //Вывод: /Users/sk/vscode/java_projects/file.txt
 ```
-
+Запись в файл.
+```java
+// Создание переменной для работы с файлом по пути 
+// указанном в аругментах.
+FileWriter wr = new FileWriter(filePath);
+// Указывается что должно быть записано в файл.
+wr.write(text);
+// непосредственно запись ранее указанного в методах `wr`
+wr.flush();
+// закрытие подключение к файлу.
+wr.close();
+```
 Методы работы с файлами или папками.
 ```java
 isHidden() 
@@ -204,6 +216,30 @@ finally {
 // блокак try, или даже если если сработает catch.
 }
 ```
+
+Проброска возникшего исключения/ошибки, на уровень выше способом `throws`.
+
+```java
+public static void main(String[] args) {
+        String filePath = "SeminarTwo/text.txt";
+        String text = "TEST";
+        //Вызов метода. Именно сюда будет проброшено исключение, где его нужно будет обработать, иначе, программа упадёт.
+        writeFile(text, filePath);
+        
+    }
+
+// Работа с файлами требует обязательно обработчика 
+// исключений, иначе, программа не запустится.
+// Однако, `throws Exception` позволяет выкинуть возникшую ошибку из метода на уровень выше. В данном случаи в корневой метод `main`, где и вызывается данный метод `writeFile`, для того что бы возмоную ошибку можно было боработать там.
+static void writeFile(String text, String filePath) throws Exception {
+        FileWriter writer = new FileWriter(filePath);
+        writer.write(text);
+        writer.flush();
+        writer.close();
+    }
+```
+
+
 Логирование
 
 Для использования необходимо создать объект, к которому мы приаязем логируемый класс или метода (это можно указать в аргументах`getLogger()`):
