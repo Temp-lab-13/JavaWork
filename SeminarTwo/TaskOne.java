@@ -13,7 +13,7 @@ public class TaskOne {
         char c1 = 'c';
         char c2 = 's';
         StringBuilder text = new StringBuilder();
-        boolean flag = true;
+        // boolean flag = true;
         for (int i = 0; i < N / 2; i++) {
             /*
              * для не чётного случая. N будет без деления.
