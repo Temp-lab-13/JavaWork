@@ -97,6 +97,14 @@ ArrayList<Integer> list3 = new ArrayList<>(10);
 // Создание листа с присвоением значений другого листа.
 ArrayList<Integer> list4 = new ArrayList<>(list3);
 ```
+Варианты разных типов Листов.
+```java
+LinkedList<type> list = new LinkedList<type>();
+Queue<type> listQueue = new LinkedList<type>();
+PriorityQueue<type> listPQ = new PriorityQueue<type>();
+Deque<type> listD = new ArrayDeque<type>();
+Stack<type> listST = new Stack<type>();
+```
 
 Добавление эелмена.
 ```java
@@ -372,5 +380,97 @@ public class Ex0043 {
         logger.log(Level.WARNING, "Тестовое логирование" );
         logger.info("Тестовое логирование" );
     }
+}
+```
+
+## Алгоритмы сортировки.
+
+### Пузырьковая сортировка.
+```java
+// Вариант №1:
+public static int[] bubblesSort(int[] array){
+    int len = array.length - 1;
+    if (len > 1) {
+        for (int i = 0; i < len; i++) {
+            int temp = 0;
+            for (int j = 0; j < len; j++) {
+                if (array[j] > array[j + 1]) {
+                    temp = array[j + 1];
+                    array[j + 1] = array[j];
+                    array[j] = temp;
+                }
+            }
+        }
+    }
+    return array;
+}
+// Вариант №2:
+public static int[] bubblesSort(int[] array){
+    boolean isSorted = false;
+    int temp;
+    int len = array.length - 1;
+    while (!isSorted) {
+        isSorted = true;
+        for (int i = 0; i < len; i++) {
+            if (array[i] > array[i + 1]) {
+                isSorted = false;
+                temp = array[i];
+                array[i] = array[i + 1];
+                array[i + 1] = temp;
+            }
+        }
+    }
+    return array;
+}
+```
+
+### Сортировка слиянием.
+
+```java
+public static int[] mergeSort(int[] a) {
+    if (a.length > 1) {
+        
+        int midl = a.length / 2;
+        int[] left = new int[midl];
+        int[] right = new int[a.length - midl];
+
+        for (int i = 0; i < midl; i++) {
+            left[i] = a[i];
+        }
+
+        for (int i = midl; i < a.length; i++) {
+            right[i - midl] = a[i];
+        }
+
+        mergeSort(left);
+        mergeSort(right);
+
+        int i = 0, j = 0, k = 0;
+
+        while (i < left.length && j < right.length) {
+            if (left[i] <= right[j]) {
+                a[k] = left[i];
+                i++;
+            } else {
+                a[k] = right[j];
+                j++;
+            }
+            k++;
+        }
+
+        while (i < left.length) {
+            a[k] = left[i];
+            i++;
+            k++;
+        }
+
+        while (j < right.length) {
+            a[k] = right[j];
+            j++;
+            k++;
+        }
+    }
+
+    return a;
 }
 ```
