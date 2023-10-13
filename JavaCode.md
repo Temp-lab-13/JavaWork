@@ -337,7 +337,6 @@ static void writeFile(String text, String filePath) throws Exception {
     }
 ```
 
-
 Логирование
 
 Для использования необходимо создать объект, к которому мы приаязем логируемый класс или метода (это можно указать в аргументах`getLogger()`):
@@ -382,6 +381,16 @@ public class Ex0043 {
     }
 }
 ```
+
+Секундомер.
+```java
+long resalt;
+long timeStart = System.currentTimeMillis();
+    //код, время выполнение которого нужно протестировать.
+long timeFinish = System.currentTimeMillis();
+resalt = timeFinish - timeStart;
+```
+
 
 ## Алгоритмы сортировки.
 
