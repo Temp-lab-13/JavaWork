@@ -99,10 +99,20 @@ ArrayList<Integer> list4 = new ArrayList<>(list3);
 ```
 Варианты разных типов Листов.
 ```java
+// Двусвязный списко.
 LinkedList<type> list = new LinkedList<type>();
+// Очередь. 
+// Первый элемент обрабатывается првым.
 Queue<type> listQueue = new LinkedList<type>();
+// Приоритетная очередь.
+// Первым обрабатывается наименьший элемент.
 PriorityQueue<type> listPQ = new PriorityQueue<type>();
+// Двухвостая очердь.
+// Елемент может быть обрабаота как первый с начала,
+// так и первый с конца.
 Deque<type> listD = new ArrayDeque<type>();
+// Стэк. Или приоритеная очередь с конца.
+// Последний элемент обрабатывается первым.
 Stack<type> listST = new Stack<type>();
 ```
 
@@ -122,7 +132,7 @@ for (Object o : list) {
 }
 ```
 
-Другие методы.
+Другие методы для ArrayList.
 ```java
 add(args)
 // добавляет элемент в список ( в т.ч. на нужную позицию)
