@@ -81,9 +81,9 @@ arr[1] = 13 // 2-ку в массиве заменит число 13
 ## Коллиекции
 
 ### ArrayList
-Похож на массив.
+Похож на массив в принципах своей работы: элменты так же хронятся по индексам, по которым могут быть быстро получены. Основное различие - в готовых методах позволяющих "менять" размер массива, добавляя иои удаляя элементы.
 
-Создание листа.
+_Создание листа._ (акутуально для почти любого типа коллектции.)
 ```java
 // Сырой лист без обозначения типа.
 // В него можно положить любой ти данных (одинаковый).
@@ -97,7 +97,7 @@ ArrayList<Integer> list3 = new ArrayList<>(10);
 // Создание листа с присвоением значений другого листа.
 ArrayList<Integer> list4 = new ArrayList<>(list3);
 ```
-Варианты разных типов Листов.
+### Варианты разных типов Листов.
 ```java
 // Двусвязный списко.
 LinkedList<type> list = new LinkedList<type>();
@@ -116,17 +116,19 @@ Deque<type> listD = new ArrayDeque<type>();
 Stack<type> listST = new Stack<type>();
 ```
 
-Добавление эелмена.
+_Добавление эелмена в ArrayList._
 ```java
 ArrayList<Integer> list = new ArrayList<Integer>();
 list.add(23);
 ```
-Вывод.
+_Вывод элемента ArrayList._
 ```java
 ArrayList<Integer> list = new ArrayList<Integer>();
 list.add(23);
 list.add(1);
-//Вывод каждого элемента через форич.
+// По индексу элемента.
+ystem.out.println(list[0]); // Вывод: [23]
+// Вывод каждого элемента через форич.
 for (Object o : list) {
     System.out.println(o);
 }
@@ -172,7 +174,101 @@ List.copyOf(col)
 List.of(item1, item2,...) 
 // возвращает неизменяемый список
 ```
-Итератор
+
+### HashMap
+
+> #### __Map__ - это множество коллекций, работающих с данными пр принципу < ключь / значение >.
+
+Ключевые особенности:
+ * ускоренная обработка данных;
+ * порядок обавление не запоминается;
+ * ключь обязан быть уникальным;
+ * в тоже время ключом может быть `null`;
+ * значения могут быть не уникальными.
+
+ В `HashMap` элементы распологаются беспоряочно и мгут менять своё положение. 
+
+ _Создание HashMap:_
+ ```java
+ Map <Integer, String> hM = new HashMap<>();
+ Map <Integer, String> hM = new HashMap<Integer, String>();
+ // Integer - первое, тип данных ключа.
+ // String - второе, тип данных значения (элементы).
+ // Тип данных ключей и значениий могут быть любыми (почти).
+ Map <Integer, String> hM = new HashMap<>(9);
+ // 9 - заранее заданный размер HashMap.
+ Map <Integer, String> hM = new HashMap<>(9, 1.0f);
+ // 1.0f - предел, после которого лист увеличивается.
+ // В данном случаи, лист увеличится, только когда он будет заполнен полность.
+ // Но можно указать и меньшше значение: 0.5f
+ // И тогда лисчт будет увеличиваться при заполнение элементами уже на половине.
+ ```
+_Добавление элементов в HashMap:_
+ ```java 
+ hM.put(2, "two"); // 2 - ключь, "two" - значение.
+ hM.putIfAbsent(1, "One"); // с проверкой на наличие данного ключа. 
+ // Если такой ключь уже есть, то ничего не добавится.
+ hM.put(null, "three"); // Пример с ключом `null`.
+ ```
+ _Вывод элементов в HashMap:_
+ ```java
+ System.out.println(hM); // Выведет все пары ключь/значения.
+ System.out.println(hM.keySet()); // только все ключи.
+ System.out.println(hM.values()); // только все элементы.
+ System.out.println(hM.get(1)); // "One"
+ System.out.println(hM.containsValue("One")); // true
+ System.out.println(hM.containsKey(3)); // falsh 
+// Перебор с помощью цикла:
+ for (var item: hM.entrySet()) {
+    System.out.println("[%d: %s]\n", item.getKey(), intem.getValue());
+ }
+ ```
+ _Удаление элемента:_
+ ```java
+ hM.remove(2); // уадалит элемент по ключу `2`.
+ ```
+### TreeMap
+
+Так же работает по принципу < ключь / значение>, с тем лишь отличием, что задаваемые ключи упорядычиваются. Логику сортировки, в случаи работы с непонятными типами (котики), стоит прописываться в ручную. 
+_Создание TreeMap:_
+ ```java
+ TreeMap <Integer, String> tMap = new TreeMap<>();
+ TreeMap <Integer, String> tMap = new TreeMap<Integer, String>();
+ // Integer - первое, тип данных ключа.
+ // String - второе, тип данных значения (элементы).
+ // Тип данных ключей и значениий могут быть любыми (почти).
+ TreeMap <Integer, String> tMap = new TreeMap<>(9);
+ // 9 - заранее заданный размер TreeMap.
+ ```
+
+ ### LinkedHashMap
+Аналогичен HashMap, за тем исключением, что запоминает расположение внесённых элементов. За что расплачивается более медленной работой сними.
+
+_Создание LinkedHashMap:_
+ ```java
+ Map <Integer, String> LinhM = new LinkedHashMap<>();
+ Map <Integer, String> LinhM = new LinkedHashMap<Integer, String>();
+ // Integer - первое, тип данных ключа.
+ // String - второе, тип данных значения (элементы).
+ // Тип данных ключей и значениий могут быть любыми (почти).
+ Map <Integer, String> LinhM = new LinkedHashMap<>(9);
+ // 9 - заранее заданный размер HashMap.
+ ```
+### HashTable
+Устарело и не актуально. Отличается от обычного HashMap тем, что нельзя использовать `null` в качестве ключа.
+
+_Создание Hashtable:_
+ ```java
+ Map <Integer, String> hT = new Hashtable<>();
+ Map <Integer, String> hT = new Hashtable<Integer, String>();
+ // Integer - первое, тип данных ключа.
+ // String - второе, тип данных значения (элементы).
+ // Тип данных ключей и значениий могут быть любыми (почти).
+ Map <Integer, String> hT = new Hashtable<>(9);
+ // 9 - заранее заданный размер HashMap.
+ ```
+
+### Итератор
 `Iterator<E>` - `Е` - тип данных.
 
 Методы: `hasNext()`, `next()`, `remove()`.
