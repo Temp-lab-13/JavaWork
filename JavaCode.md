@@ -268,7 +268,68 @@ _Создание Hashtable:_
  // 9 - заранее заданный размер HashMap.
  ```
 
-### Итератор
+###  Коллекции Set
+
+* Коллекции, содержащие уникальные элементы.
+* Быстрая обработка данных.
+* "Основаны" на Map`ах без пары.
+* Порядок добавления не сохраняется.
+
+#### HashSet
+ _Создание HashSet:_
+ 
+ В `< >` указывается тип данных, что будет храниться в коллекции. Также в `( )` можно указать изначальный размер коллекции.
+ ```java
+ Set <Integer> set = new HashSet<>();
+ Set <Integer> set2 = new HashSet<Integer>();
+ Set <Integer> set3 = new HashSet<>(9);
+ var set4 = new HashSet<Integer>(set); // копируем в set4.
+ ```
+_Получение элемента (работает со всеми Set-коллекциями):_
+```java
+set.first(); // Первый элемент.
+set.last(); // Последний элемент.
+set.headSet(element); // Все элементы, которые меньше element.
+set.taikSet(element); // Все элементы которые больше element.
+subSet(element1, element2); // Все элементы от element1 до element2.
+```
+_Методы (работают со всеми Set-коллекциями):_
+```java
+set.isEmpty() // проверка на пустоту коллекции.
+set.add(element) // добавление элемента в коллекцию.
+set.remove(element) // удаление элмента из коллекции.
+set.contains(element) // проверка на наличие элемента в коллекции.
+set.clear() // очиска всей коллекции (удаление всего).
+set.size() // возращает размер коллекции.
+set.addAll(set2); // объединят множество set и Coll
+set.retainAll(set2); // ворзращает пересечение множеств.
+set.removeAll(set2); // возращает разность множеств.
+```
+#### TreeSet
+
+* В основе коллекции HashMap.
+* Элементы упорядывачаются по возрастанию.
+* null-в быть не может.
+
+_Создание TreeSet:_
+ ```java
+ Set <Integer> set = new TreeSet<>();
+ Set <Integer> set2 = new TreeSet<Integer>();
+ Set <Integer> set3 = new TreeSet<>(9);
+ var set4 = new TreeSet<Integer>(set); // копируем в set4.
+ ```
+#### LinkedHashSet
+* В основе коллекции HashMap.
+* Запоминается порядок добавленных элементов.
+
+_Создание LinkedHashSet:_
+```java
+ Set <Integer> set = new LinkedHashSet<>();
+ Set <Integer> set2 = new LinkedHashSet<Integer>();
+ Set <Integer> set3 = new LinkedHashSet<>(9);
+ var set4 = new LinkedHashSet<Integer>(set); // копируем в set4.
+ ```
+## Итератор
 `Iterator<E>` - `Е` - тип данных.
 
 Методы: `hasNext()`, `next()`, `remove()`.
