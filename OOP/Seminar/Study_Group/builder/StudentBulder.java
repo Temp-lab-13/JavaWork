@@ -1,4 +1,6 @@
-package OOP.Seminar.Study_Group;
+package OOP.Seminar.Study_Group.builder;
+
+import OOP.Seminar.Study_Group.student.Student;
 
 public class StudentBulder {
     private int maxId;

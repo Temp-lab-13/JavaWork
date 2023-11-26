@@ -1,6 +1,6 @@
-package OOP.Seminar.Study_Group;
+package OOP.Seminar.Study_Group.student;
 
-public class Student {
+public class Student implements Comparable<Student> {
     private int id;
     private String name;
     private int age;
@@ -30,5 +30,10 @@ public class Student {
                 ", name = " + name + '\'' +
                 ", age = " + age +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Student o) {
+        return this.name.compareTo(o.name);
     }
 }

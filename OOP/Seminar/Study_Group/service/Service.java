@@ -1,4 +1,8 @@
-package OOP.Seminar.Study_Group;
+package OOP.Seminar.Study_Group.service;
+
+import OOP.Seminar.Study_Group.builder.StudentBulder;
+import OOP.Seminar.Study_Group.student.Student;
+import OOP.Seminar.Study_Group.studentGroup.StudyGroup;
 
 public class Service {
     private StudyGroup group;
@@ -22,6 +26,19 @@ public class Service {
             stringBuilder.append("\n");
         }
         return stringBuilder.toString();
+    }
+
+    public void sortByName() {
+        group.sortByName();
+    }
+
+    public void sortByAge() {
+        group.sortByAge();
+    }
+
+    @Override
+    public String toString() {
+        return getStudentListInfo();
     }
 
 }
